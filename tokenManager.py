@@ -31,10 +31,11 @@ def updateToken():
             'client_secret':'23bd6658d96e4711b3f79ba149819c75'}
         r = requests.post(url = url, data = data)
         data = r.json()
+        print(data)
         try:
             #updates usercode with id
             mycursor = mydb.cursor()
-            sql = "UPDATE userToken SET access_token = '" + str(data["access_token"]) + "', scope = '" + str(data["scope"]) + "', expires_in = '" + str(data["expires_in"]) + "' WHERE tokenID = '" + str(i.userID) + "'"
+            sql = "UPDATE userToken SET access_token = '" + str(data["access_token"]) + "', scope = '" + str(data["scope"]) + "', expires_in = '" + str(data["expires_in"]) + "', refresh_token = '" + str(data["refresh_token"]) + "' WHERE tokenID = '" + str(i.userID) + "'"
             mycursor.execute(sql)
             mydb.commit()
             print(mycursor.rowcount, "record(s) affected")
@@ -66,5 +67,5 @@ def hourlyUpdate():
             print(mycursor.rowcount, "record(s) affected")
         except Exception as e:
             print(e)
-hourlyUpdate()
+updateToken()
     
