@@ -9,6 +9,6 @@
 ?>
 
 <form action="submit.php" method="POST">
-    <input type="email" name="email" required>
+    <label>Name: <input type="text" name="email" required></label>
     <input type="submit">
 </form>

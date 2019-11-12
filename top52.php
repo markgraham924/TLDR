@@ -61,17 +61,16 @@
     }
 
     $NofTracks = 0;
-    $danceability = 0;
-    $energy = 0;
-    $loudness = 0;
-    $mode = 0;
-    $speechiness = 0;
-    $acousticness = 0;
-    $instrumentalness = 0;
-    $liveness = 0;
-    $valence = 0;
-    $tempo = 0;
-    $duration_ms = 0;
+    $danceability = array();
+    $energy = array();
+    $loudness = array();
+    $mode = array();
+    $speechiness = array();
+    $acousticness = array();
+    $instrumentalness = array();
+    $liveness = array();
+    $valence = array();
+    $tempo = array();
     $seed_tracks = $response->items[0]->id.','.$response->items[1]->id.','.$response->items[2]->id.','.$response->items[3]->id.','.$response->items[4]->id;
 
     foreach ($tracks as $track){
@@ -88,18 +87,18 @@
 
         $response = json_decode($response);
 
-        $NofTracks = 0 + 1;
-        $danceability = 0 + $response->danceability;
-        $energy = 0 + $response->energy;
-        $loudness = 0 + $response->loudness;
-        $mode = 0 + $response->mode;
-        $speechiness = 0 + $response->speechiness;
-        $acousticness = 0 + $response->acousticness;
-        $instrumentalness = 0 + $response->instrumentalness;
-        $liveness = 0 + $response->liveness;
-        $valence = 0 + $response->valence;
-        $tempo = 0 + $response->tempo;
-        $duration_ms = 0 + $response->duration_ms;
+        $NofTracks = arrayPush($, 1;
+        $danceability = arrayPush($danceability, $response->danceability);
+        $energy = arrayPush($energy, $response->energy);
+        $loudness = arrayPush($loudness, $response->loudness);
+        $mode = arrayPush($mode, $response->mode);
+        $speechiness = arrayPush($speechiness, $response->speechiness);
+        $acousticness = arrayPush($acousticness, $response->acousticness);
+        $instrumentalness = arrayPush($instrumentalness, $response->instrumentalness);
+        $liveness = arrayPush($liveness, $response->liveness);
+        $valence = arrayPush($valence, $response->valence);
+        $tempo = arrayPush($tempo, $response->tempo);
+        $duration_ms = arrayPush($duration_ms, $response->duration_ms);
     }
     $danceability = number_format($danceability / $NofTracks, 1, '.', '');
     $energy = number_format($energy / $NofTracks, 1, '.', '');

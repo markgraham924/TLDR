@@ -31,7 +31,6 @@ def updateToken():
             'client_secret':'23bd6658d96e4711b3f79ba149819c75'}
         r = requests.post(url = url, data = data)
         data = r.json()
-        print(data)
         try:
             #updates usercode with id
             mycursor = mydb.cursor()
@@ -66,6 +65,10 @@ def hourlyUpdate():
             mydb.commit()
             print(mycursor.rowcount, "record(s) affected")
         except Exception as e:
-            print(e)
-updateToken()
-    
+            hourlyUpdate()
+def recommended(email):
+    url = "https://gmpauto.co.uk/spotify/api/top50.php?email="+email
+    r = requests.get(url = url)
+    print(r)
+recommended('markgraham924@gmail.com')
+
