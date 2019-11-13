@@ -18,9 +18,9 @@
         }
     }
 
-    $servername = "160.153.131.192";
-    $username = "spotifyAdmin";
-    $password = "!~YL;?Cg=LOB";
+    $servername = "localhost";
+    $username = "markg";
+    $password = "/someWHERE924";
     $dbname = "spotifyData";
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -113,7 +113,7 @@
     $tempo = number_format($tempo / $NofTracks, 1, '.', '');
     $duration_ms = 255886;
 
-    $url = 'https://api.spotify.com/v1/recommendations?limit=5&market=GB&min_popularity=50&target_popularity=75&seed_tracks='.$seed_tracks.'&target_acousticness='.$acousticness.'&target_danceability='.$danceability.'&target_energy='.$energy.'&target_instrumentalness='.$instrumentalness.'&target_liveness='.$liveness.'&target_loudness='.$loudness.'&target_speechiness='.$speechiness.'&target_tempo='.$tempo.'&target_valence='.$valence.'';
+    $url = 'https://api.spotify.com/v1/recommendations?limit=1&market=GB&min_popularity=50&target_popularity=75&seed_tracks='.$seed_tracks.'&target_acousticness='.$acousticness.'&target_danceability='.$danceability.'&target_energy='.$energy.'&target_instrumentalness='.$instrumentalness.'&target_liveness='.$liveness.'&target_loudness='.$loudness.'&target_speechiness='.$speechiness.'&target_tempo='.$tempo.'&target_valence='.$valence.'';
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPHEADER, [
@@ -123,12 +123,12 @@
         ]);
     $response = curl_exec($curl);
     curl_close($curl);
-
     $response = json_decode($response);
-
     foreach ($response->tracks as $item){
-        echo $item->external_urls->spotify;
-        echo '<br />';
+        $temp = $item->external_urls->spotify;
     }
+    $post_data = json_encode(array('external_url' => $temp), JSON_FORCE_OBJECT);
+    $post_data = str_replace('\/', '/', $post_data);
+    echo $post_data;
 
 ?> 

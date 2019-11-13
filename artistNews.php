@@ -66,20 +66,12 @@
     $oauth_nonce = substr(str_shuffle($permitted_chars), 0, 32);
     $oauth_timestamp = time();
     //signature
-    function generateSignature($request, $timestamp, $nonce, $signatureMethod, $version)
-        {
-            $base = $request['method'] . "&" . rawurlencode($request['url']) . "&"
-                . rawurlencode("oauth_consumer_key=" . rawurlencode('e0aCcRbNoE7mKSvXMoM7EyO1j')
-                . "&oauth_nonce=" . rawurlencode($nonce)
-                . "&oauth_signature_method=" . rawurlencode($signatureMethod)
-                . "&oauth_timestamp=" . $timestamp
-                . "&oauth_version=" . $version);
-
-            $key = rawurlencode('dgYSJDFzD9efZwcnh285jxncVQ1cTu1QCC3llBD9VCmPsQ0ept') . '&' . rawurlencode('vlVK6bYgySKbuNbxKkffywi4euwjySJeeqHltZNEX8EiS');
-            $signature = base64_encode(hash_hmac('sha1', $base, $key, true));
-
-            return $signature;
-        }
+    function generateSignature($request, $timestamp, $nonce, $signatureMethod, $version){
+        $base = $request['method'] . "&" . rawurlencode($request['url']) . "&" . rawurlencode("oauth_consumer_key=" . rawurlencode('e0aCcRbNoE7mKSvXMoM7EyO1j') . "&oauth_nonce=" . rawurlencode($nonce) . "&oauth_signature_method=" . rawurlencode($signatureMethod) . "&oauth_timestamp=" . $timestamp . "&oauth_version=" . $version);
+        $key = rawurlencode('dgYSJDFzD9efZwcnh285jxncVQ1cTu1QCC3llBD9VCmPsQ0ept') . '&' . rawurlencode('vlVK6bYgySKbuNbxKkffywi4euwjySJeeqHltZNEX8EiS');
+        $signature = base64_encode(hash_hmac('sha1', $base, $key, true));
+        return $signature;
+    }
     
     $url = 'https://api.twitter.com/1.1/users/search.json?q='.$tracks[0]->trackID.'&count=1';
     $oauth_signature = generateSignature($url, $oauth_timestamp, $oauth_nonce, "HMAC-SHA1", "1.0");

@@ -1,13 +1,13 @@
 <?php
 
     if(!isset($_SESSION["code"])){
-        header("Location: https://gmpauto.co.uk/spotify/index.php");
+        header("Location: https://www.tldl.dev/index.php");
     }
 
     $code = $_SESSION["code"];
     $email = $_POST["email"];
 
-    $servername = "134.209.180.229";
+    $servername = "localhost";
     $username = "markg";
     $password = "/someWHERE924";
     $dbname = "spotifyData";
