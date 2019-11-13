@@ -68,4 +68,7 @@
 
     $conn->close();
 
+    header("Location: https://www.tldl.dev/index.php?success=yes");
+
+
 ?>
