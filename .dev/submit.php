@@ -68,7 +68,7 @@
 
     $conn->close();
 
-    header("Location: https://www.tldl.dev/index.php?success=yes");
+    header("Location: https://www.tldl.dev/suggest.php?id=" . $email);
 
 
 ?>

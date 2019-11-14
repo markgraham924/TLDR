@@ -22,7 +22,7 @@
         </nav>
         <div class="container">
             <form action="submit.php" method="POST">
-                <label>Name: <input class="form-control" type="text" name="email" required></label>
+                <label>Username: <input required class="form-control" type="text" name="email" required></label>
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
         </div>
