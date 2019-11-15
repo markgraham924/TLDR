@@ -178,7 +178,7 @@
             ?>
 
         <div class="imgntext">
-        <img src="background.jpg" alt="Background Image" style="height:100%;">
+            <img src="background.jpg" style="height:100%;width:100%;" alt="Background Image">
             <div class="centered">
 
             
